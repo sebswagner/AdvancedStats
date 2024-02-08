@@ -13,74 +13,94 @@ void Player::setPlayerName(string name, int teamNumber)
 	playerNumber = teamNumber;
 }
 
+void Player::setMinutesPlayed(int minutes, int seconds)
+{
+	this->MinutesPlayed = minutes;
+	this->SecondsPlayed = seconds;
+
+	this->inGameTime = (this->MinutesPlayed * 60) + this->SecondsPlayed;
+}
+
 void Player::setPoints(int points)
 {
-	PTS = points;
+	this->PTS = points;
 }
 
 void Player::setRebounds(int offensiveRebounds, int defensiveRebounds)
 {
-	OffensiveRB = offensiveRebounds;
-	DeffensiveRB = defensiveRebounds;
-	TotalRB = OffensiveRB + DeffensiveRB;
+	this->OffensiveRB = offensiveRebounds;
+	this->DeffensiveRB = defensiveRebounds;
+	this->TotalRB = this->OffensiveRB + this->DeffensiveRB;
 }
 
 void Player::setAssists(int assists)
 {
-	AST = assists;
+	this->AST = assists;
 }
 
 void Player::setSteals(int steals)
 {
-	STL = steals;
+	this->STL = steals;
 }
 
 void Player::setBlocks(int blocks)
 {
-	BLK = blocks;
+	this->BLK = blocks;
 }
 
-void Player::setAttempts(int totalAttempts, int totalMakes, int threePointAttempts, int threePointMakes)
+void Player::setTurnovers(int turnover)
 {
-	FGA = totalAttempts;
-	FGM = totalMakes;
-	ThreePA = threePointAttempts;
-	ThreePM = threePointMakes;
+	this->TOV = turnover;
 }
 
-double Player::getThreePercentage(int ThreePointersMade, int ThreePointersAttempted)
+void Player::setFieldGoals(double FieldGoalsMade, double FieldGoalsAttempted)
 {
-	ThreePM = ThreePointersMade;
-	ThreePA = ThreePointersAttempted;
-
-	ThreePPercentage = (ThreePM / ThreePA) * 1000;
-
-	cout << "Your three point percentage is: ." << fixed << setprecision(0) << ThreePPercentage;
-
-	return ThreePPercentage;
-}
-
-double Player::getFieldGoalPercentage(double FieldGoalsMade, double FieldGoalsAttempted)
-{	
 	this->FGM = FieldGoalsMade;
 	this->FGA = FieldGoalsAttempted;
-
-	this->FGPercentage = (this->FGM / this->FGA) * 1000;
-
-	cout << "Your field goal percentage is: ." << fixed << setprecision(0) << this->FGPercentage;
-	return this->FGPercentage;
 }
 
-double Player::getFreeThrowPercenrage(int FreeThrowsMade, int FreeThrowsAttempted)
+void Player::setThreePointers(double ThreePointersMade, double ThreePointersAttempted)
 {
-	FTM = FreeThrowsMade;
-	FTA = FreeThrowsAttempted;
+	this->ThreePM = ThreePointersMade;
+	this->ThreePA = ThreePointersAttempted;
+}
 
-	FTPercentage = (FTM / FTA) * 1000;
+void Player::setFreeThrows(double FreeThrowsMade, double FreeThrowsAttempted)
+{
+	this->FTM = FreeThrowsMade;
+	this->FTA = FreeThrowsAttempted;
+}
 
-	cout << "Your free throw percentage is: ." << fixed << setprecision(0) << FTPercentage;
+void Player::getThreePointPercentage()
+{
+	this->ThreePPercentage = (this->ThreePM / this->ThreePA) * 1000;
 
-	return 0.0;
+	cout << "Your three point percentage is: ." << fixed << setprecision(0) << this->ThreePPercentage;
+}
+
+void Player::getFieldGoalPercentage()
+{	
+	this->FGPercentage = (this->FGM / this->FGA) * 1000;
+
+	cout << "Your field goal percentage is: ." << fixed << setprecision(0) << this->FGPercentage << endl;
+}
+
+void Player::getFreeThrowPercenrage()
+{
+	this->FTPercentage = (this->FTM / this->FTA) * 1000;
+
+	cout << "Your free throw percentage is: ." << fixed << setprecision(0) << this->FTPercentage;
+}
+
+string Player::getName()
+{
+	return this->playerName;
+}
+
+void Player::settemporarySettingFunction(int prviKurac, int drugiKurac)
+{
+	teamORB = prviKurac;
+	oppDRB = drugiKurac;
 }
 
 int Player::getPlusMinus(int plusMinus)
@@ -89,48 +109,94 @@ int Player::getPlusMinus(int plusMinus)
 	return 0;
 }
 
-void Player::getTrueShootings()
+void Player::getTrueShooting()
 {
-	TrueShootingAttempts = (FTA * 0.44 + FGA) * 1000;
+	this->TrueShootingAttempts = (this->FTA * 0.44 + this->FGA);
 
-	TrueShootingPercentage = (PTS / (2 * TrueShootingAttempts)) * 1000;
+	this->TrueShootingPercentage = (this->PTS / (2 * this->TrueShootingAttempts));
 
-	cout << "True shooting attempts: ." << fixed << setprecision(0) << TrueShootingAttempts << endl;
+	this->TrueShootingAttempts = this->TrueShootingAttempts * 1000;
+	this->TrueShootingPercentage = this->TrueShootingPercentage * 1000;
 
-	cout << "True shooting percentage: ." << fixed << setprecision(0) << TrueShootingPercentage << endl;
+
+	cout << "True shooting attempts: ." << fixed << setprecision(0) << this->TrueShootingAttempts << endl;
+
+	cout << "True shooting percentage: ." << fixed << setprecision(0) << this->TrueShootingPercentage << endl;
 }
 
-void Player::getEffectiveFGP()
+void Player::getEffectiveFGPercentage()
 {
-	EffectiveGoalPercentage = ((FGM + 0.5 * ThreePM) / FGA) * 1000;
+	this->EffectiveFieldGoalPercentage = ((this->FGM + 0.5 * this->ThreePM) / this->FGA) * 1000;
 
-	cout << "Effective field goal percentage: ." << fixed << setprecision(0) << EffectiveGoalPercentage << endl;
+	cout << "Effective field goal percentage: ." << fixed << setprecision(0) << this->EffectiveFieldGoalPercentage << endl;
 }
 
 void Player::getORBpercentage()
 {
-	OffensiveReboundPercentage = ((OffensiveRB * (40 / 5)) / (MinutesPlayed * (teamORB + oppDRB))) * 100;
+	this->OffensiveReboundPercentage = ((100 * this->OffensiveRB * ((static_cast<double>(240) * 60) / 5)) / (this->inGameTime * (teamORB + oppDRB)));
 
-	cout << "Deffensive rebound percentage: " << fixed << setprecision(1) << OffensiveReboundPercentage << endl;
+	cout << "Deffensive rebound percentage: " << fixed << setprecision(1) << this->OffensiveReboundPercentage << "%" << endl;
 }
 
 void Player::getDRBpercentage()
 {
-	DeffensiveReboundPercentage = ((DeffensiveRB * (40 / 5)) / (MinutesPlayed * (teamDRB + oppORB))) * 100;
+	this->DeffensiveReboundPercentage = ((100 * this->DeffensiveRB * (static_cast<double>(240) / 5)) / (this->inGameTime * (teamDRB + oppORB)));
 
-	cout << "Deffensive rebound percentage: " << fixed << setprecision(1) << DeffensiveReboundPercentage << endl;
+	cout << "Deffensive rebound percentage: " << fixed << setprecision(1) << this->DeffensiveReboundPercentage << "%" << endl;
 }
 
 void Player::getTRBpercentage()
 {
-	TotalReboundPercentage = ((TotalRB * (40 / 5)) / (MinutesPlayed * (teamTRB + oppTRB))) * 100;
+	this->TotalReboundPercentage = ((100 * this->TotalRB * (static_cast<double>(240) / 5)) / (this->inGameTime * (teamTRB + oppTRB)));
 
-	cout << "Deffensive rebound percentage: " << fixed << setprecision(1) << TotalReboundPercentage << endl;
+	cout << "Deffensive rebound percentage: " << fixed << setprecision(1) << this->TotalReboundPercentage << "%" << endl;
 }
 
 void Player::getASTPercentage()
 {
-	AssistPercentage = (100 * AST / (((MinutesPlayed / (40 / 5)) * TeamFG) - FGM)) * 100;
+	this->AssistPercentage = (100 * this->AST / (((this->inGameTime / (static_cast<double>(240) / 5)) * teamFGM) - this->FGM));
 
-	cout << "Assist percentage: " << fixed << setprecision(1) << AssistPercentage << endl;
+	cout << "Assist percentage: " << fixed << setprecision(1) << this->AssistPercentage << "%" << endl;
+}
+
+void Player::getThreePointAttemptRate()
+{
+	this->ThreePointAttemptRate = (this->ThreePA / this->FGA) * 1000;
+
+	cout << "Three point attempt rate is: ." << fixed << setprecision(3) << this->AssistPercentage << endl;
+}
+
+void Player::getFreeThrowAttemptRate()
+{
+	this->FreeThrowAttemptRate = (this->FTA / this->FGA) * 1000;
+
+	cout << "Free throw attempt rate is: ." << fixed << setprecision(3) << this->FreeThrowAttemptRate << endl;
+}
+
+void Player::getStealPercentage()
+{
+	this->StealPercentage = ((100 * (this->STL * (static_cast <double>(240) / 5))) / (this->inGameTime / oppPossesions));
+
+	cout << "Steal percentage: " << fixed << setprecision(1) << this->StealPercentage << endl;
+}
+
+void Player::getBlockPercentage()
+{
+	this->BlockPercentage = ((100 * (this->BLK * (static_cast <double>(240) / 5))) / (this->inGameTime * (oppFGA - opp3PA)));
+
+	cout << "Block percentage: " << fixed << setprecision(1) << this->BlockPercentage << endl;
+}
+
+void Player::getTurnoverPercentage()
+{
+	this->TurnoverPercentage = ((100 * this->TOV) / (this->FGA + 0.44 * this->FTA * this->TOV));
+
+	cout << "Turnover percentage: " << fixed << setprecision(1) << this->TurnoverPercentage << endl;
+}
+
+void Player::getUsagePercentage()
+{
+	this->UsagePercentage = (100 * (this->FGA + 0.44 * this->FTA * this->TOV) * (static_cast <double>(40) / 5)) / (this->inGameTime * (teamFGA + 0.44 * teamFTA * teamTOV));
+
+	cout << "Usage percentage: " << fixed << setprecision(3) << this->UsagePercentage << endl;
 }

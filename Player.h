@@ -11,31 +11,48 @@ using namespace std;
 class Player {
 public:
     void setPlayerName(string name, int teamNumber);
+    void setMinutesPlayed(int minutes, int seconds);
     void setPoints(int points);
     void setRebounds(int offensiveRebounds, int defensiveRebounds);
     void setAssists(int assists);
     void setSteals(int steals);
     void setBlocks(int blocks);
-    void setAttempts(int totalAttempts, int totalMakes, int threePointAttempts, int threePointMakes);
-    double getThreePercentage(int ThreePointersMade, int ThreePointersAttempted);
-    double getFieldGoalPercentage(double FieldGoalsMade, double FieldGoalsAttempted);
-    double getFreeThrowPercenrage(int FreeThrowsMade, int FreeThrowsAttempted);
+    void setTurnovers(int turnover);
+
+    void setFieldGoals(double FieldGoalsMade, double FieldGoalsAttempted);
+    void setThreePointers(double ThreePointersMade, double ThreePointersAttempted);
+    void setFreeThrows(double FreeThrowsMade, double FreeThrowsAttempted);
+
+    void getThreePointPercentage();
+    void getFieldGoalPercentage();
+    void getFreeThrowPercenrage();
+    
+
+    string getName();
+
+    void settemporarySettingFunction(int prviKuraac, int drugiKurac);
+
     int getPlusMinus(int plusMinus);
 
+
     // Advanced metrics
-    void getTrueShootings();
-    void getEffectiveFGP();
+    void getTrueShooting();
+    void getEffectiveFGPercentage();
     void getORBpercentage();
     void getDRBpercentage();
     void getTRBpercentage();
     void getASTPercentage();
-    
+    void getThreePointAttemptRate();
+    void getFreeThrowAttemptRate();
+    void getStealPercentage();
+    void getBlockPercentage();
+    void getTurnoverPercentage();
+    void getUsagePercentage();
 
 private:
     int playerNumber;
     string playerName, position;
-    int MinutesPlayed;
-    int SecondsPlayed;
+    int MinutesPlayed, SecondsPlayed, inGameTime;
     double FGA, FGM, FGPercentage;
     double ThreePM, ThreePA, ThreePPercentage;
     double FTM, FTA, FTPercentage;
@@ -48,16 +65,26 @@ private:
     int PersonalFouls = 0;
     int plusMinus = 0;
 
-    int teamORB, teamDRB, teamTRB;
+
+    // prebaci u team.cpp
+    int teamORB , teamDRB, teamTRB;
+    int teamFTA, teamFTM, teamTOV;
+    double teamFGM, teamFGA;
+
+    //opponents Metrics
+    int oppPossesions;
     int oppORB, oppDRB, oppTRB;
-    double TeamFG;
+    int oppFGA, opp3PA;
 
-    //advanced metrics 
+    //advanced metrics   
 
+    double ThreePointAttemptRate, FreeThrowAttemptRate;
     double TrueShootingAttempts, TrueShootingPercentage;
-    double EffectiveGoalPercentage;
+    double EffectiveFieldGoalPercentage;
     double OffensiveReboundPercentage, DeffensiveReboundPercentage, TotalReboundPercentage;
     double AssistPercentage;
+    double StealPercentage, BlockPercentage, TurnoverPercentage, UsagePercentage;
+    
 
     //pointeri
 
