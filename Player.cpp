@@ -71,6 +71,58 @@ void Player::setFreeThrows(double FreeThrowsMade, double FreeThrowsAttempted)
 	this->FTA = FreeThrowsAttempted;
 }
 
+void Player::setPlayerStats(int MinutesPlayed, int SecondsPlayed, double FieldGoalsMade, double FieldGoalsAttempted, double ThreePointersMade, double ThreePointersAttempted, double FreeThrowsMade, double FreeThrowsAttempted, int OffensiveRebounds, int DeffensiveRebounds, int Assists, int Blocks, int Turnovers, int PersonalFouls)
+{
+	this->MinutesPlayed = MinutesPlayed;
+	this->SecondsPlayed = SecondsPlayed;
+	this->inGameTime = (this->MinutesPlayed * 60) + this->SecondsPlayed;
+
+	this->FGM = FieldGoalsMade;
+	this->FGA = FieldGoalsAttempted;
+	this->ThreePM = ThreePointersMade;
+	this->ThreePA = ThreePointersAttempted;
+	this->FTM = FreeThrowsMade;
+	this->FTA = FreeThrowsAttempted;
+
+	this->OffensiveRB = OffensiveRebounds;
+	this->DeffensiveRB = DeffensiveRebounds;
+	
+	this->AST = Assists;
+	this->BLK = Blocks;
+	this->TOV = Turnovers;
+	this->PF = PersonalFouls;
+}
+
+void Player::getBasicBoxScoreStats()
+{
+	this->FGPercentage = (this->FGM / this->FGA) * 1000;
+	this->ThreePPercentage = (this->ThreePM / this->ThreePA) * 1000;
+	this->FTPercentage = (this->FTM / this->FTA) * 1000;
+	this->TotalRB = this->OffensiveRB + this->DeffensiveRB;
+	this->PTS = (this->FGM * 2) + (this->ThreePM * 3) + this->FTM;
+	/*
+	this->getThreePointPercentage();
+	this->getFieldGoalPercentage();
+	this->getFreeThrowPercenrage();
+	*/
+}
+
+void Player::calculateAdvancedStatistics()
+{
+	this->getTrueShooting();
+	this->getEffectiveFGPercentage();
+	this->getThreePointAttemptRate();
+	this->getFreeThrowAttemptRate();
+	this->getORBpercentage();
+	this->getDRBpercentage();
+	this->getTRBpercentage();
+	this->getASTPercentage();	
+	this->getStealPercentage();
+	this->getBlockPercentage();
+	this->getTurnoverPercentage();
+	this->getUsagePercentage();
+}
+
 void Player::getThreePointPercentage()
 {
 	this->ThreePPercentage = (this->ThreePM / this->ThreePA) * 1000;

@@ -23,6 +23,10 @@ public:
     void setThreePointers(double ThreePointersMade, double ThreePointersAttempted);
     void setFreeThrows(double FreeThrowsMade, double FreeThrowsAttempted);
 
+    void setPlayerStats(int MinutesPlayed, int SecondsPlayed, double FieldGoalsMade, double FieldGoalsAttempted, double ThreePointersMade, double ThreePointersAttempted, double FreeThrowsMade, double FreeThrowsAttempted, int OffensiveRebounds, int DeffensiveRebounds, int Assists, int Blocks, int Turnovers, int PersonalFouls);
+    void getBasicBoxScoreStats();
+    void calculateAdvancedStatistics();
+
     void getThreePointPercentage();
     void getFieldGoalPercentage();
     void getFreeThrowPercenrage();
@@ -62,7 +66,7 @@ private:
     int TOV = 0;
     int PTS = 0;
     int STL = 0;
-    int PersonalFouls = 0;
+    int PF = 0;
     int plusMinus = 0;
 
 

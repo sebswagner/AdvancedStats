@@ -13,6 +13,8 @@ class Team {
 		void calculateTeamStats();
 		void ListAllPlayers();
 
+		void setOpponentTeamStatistics(int opponentPossessions, int opponentORB, int opponentDRB, int opponentTRB, int opponentFGA, int opponent3PA);
+
 	private:
 		std::vector<Player> playerList;
 		
