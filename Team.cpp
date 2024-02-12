@@ -24,3 +24,13 @@ void Team::ListAllPlayers()
 		cout << playerList[i].getName() << endl;
 	}
 }
+
+void Team::setOpponentTeamStatistics(int opponentPossessions, int opponentORB, int opponentDRB, int opponentTRB, int opponentFGA, int opponent3PA)
+{
+	oppPossessions = opponentPossessions;
+	oppORB = opponentORB;
+	oppDRB = opponentDRB;
+	oppTRB = opponentORB + opponentDRB;
+	oppFGA = opponentFGA;
+	opp3PA = opponent3PA;
+}

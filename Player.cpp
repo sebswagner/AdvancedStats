@@ -13,64 +13,6 @@ void Player::setPlayerName(string name, int teamNumber)
 	playerNumber = teamNumber;
 }
 
-void Player::setMinutesPlayed(int minutes, int seconds)
-{
-	this->MinutesPlayed = minutes;
-	this->SecondsPlayed = seconds;
-
-	this->inGameTime = (this->MinutesPlayed * 60) + this->SecondsPlayed;
-}
-
-void Player::setPoints(int points)
-{
-	this->PTS = points;
-}
-
-void Player::setRebounds(int offensiveRebounds, int defensiveRebounds)
-{
-	this->OffensiveRB = offensiveRebounds;
-	this->DeffensiveRB = defensiveRebounds;
-	this->TotalRB = this->OffensiveRB + this->DeffensiveRB;
-}
-
-void Player::setAssists(int assists)
-{
-	this->AST = assists;
-}
-
-void Player::setSteals(int steals)
-{
-	this->STL = steals;
-}
-
-void Player::setBlocks(int blocks)
-{
-	this->BLK = blocks;
-}
-
-void Player::setTurnovers(int turnover)
-{
-	this->TOV = turnover;
-}
-
-void Player::setFieldGoals(double FieldGoalsMade, double FieldGoalsAttempted)
-{
-	this->FGM = FieldGoalsMade;
-	this->FGA = FieldGoalsAttempted;
-}
-
-void Player::setThreePointers(double ThreePointersMade, double ThreePointersAttempted)
-{
-	this->ThreePM = ThreePointersMade;
-	this->ThreePA = ThreePointersAttempted;
-}
-
-void Player::setFreeThrows(double FreeThrowsMade, double FreeThrowsAttempted)
-{
-	this->FTM = FreeThrowsMade;
-	this->FTA = FreeThrowsAttempted;
-}
-
 void Player::setPlayerStats(int MinutesPlayed, int SecondsPlayed, double FieldGoalsMade, double FieldGoalsAttempted, double ThreePointersMade, double ThreePointersAttempted, double FreeThrowsMade, double FreeThrowsAttempted, int OffensiveRebounds, int DeffensiveRebounds, int Assists, int Blocks, int Turnovers, int PersonalFouls)
 {
 	this->MinutesPlayed = MinutesPlayed;
@@ -137,7 +79,7 @@ void Player::getFieldGoalPercentage()
 	cout << "Your field goal percentage is: ." << fixed << setprecision(0) << this->FGPercentage << endl;
 }
 
-void Player::getFreeThrowPercenrage()
+void Player::getFreeThrowPercentage()
 {
 	this->FTPercentage = (this->FTM / this->FTA) * 1000;
 

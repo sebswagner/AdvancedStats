@@ -11,17 +11,6 @@ using namespace std;
 class Player {
 public:
     void setPlayerName(string name, int teamNumber);
-    void setMinutesPlayed(int minutes, int seconds);
-    void setPoints(int points);
-    void setRebounds(int offensiveRebounds, int defensiveRebounds);
-    void setAssists(int assists);
-    void setSteals(int steals);
-    void setBlocks(int blocks);
-    void setTurnovers(int turnover);
-
-    void setFieldGoals(double FieldGoalsMade, double FieldGoalsAttempted);
-    void setThreePointers(double ThreePointersMade, double ThreePointersAttempted);
-    void setFreeThrows(double FreeThrowsMade, double FreeThrowsAttempted);
 
     void setPlayerStats(int MinutesPlayed, int SecondsPlayed, double FieldGoalsMade, double FieldGoalsAttempted, double ThreePointersMade, double ThreePointersAttempted, double FreeThrowsMade, double FreeThrowsAttempted, int OffensiveRebounds, int DeffensiveRebounds, int Assists, int Blocks, int Turnovers, int PersonalFouls);
     void getBasicBoxScoreStats();
@@ -29,7 +18,7 @@ public:
 
     void getThreePointPercentage();
     void getFieldGoalPercentage();
-    void getFreeThrowPercenrage();
+    void getFreeThrowPercentage();
     
 
     string getName();
