@@ -16,6 +16,21 @@ void Team::addPlayer(const Player& player)
 
 void Team::calculateTeamStats()
 {
+	for (int i = 0; i < this->playerList.size(); i++) {
+		this->teamMinutesPlayed += playerList[i].getMinutesPlayed();
+		this->teamFGA += playerList[i].getFieldGoalsMade();
+		this->teamFGA += playerList[i].getFieldGoalsAttemtped();
+		this->teamThreePM += playerList[i].getThreePointersMade();
+		this->teamThreePA += playerList[i].getThreePointersAttemtped();
+		this->teamFTM += playerList[i].getFreeThrowsMade();
+		this->teamFTA += playerList[i].getFreeThrowsAttemtped();
+
+	}
+
+	this->teamInGameTime = this->teamMinutesPlayed / 60;
+	this->teamFGPercentage = this->teamFGM / this->teamFGA;
+	this->teamThreePPercentage = this->teamThreePM / this->teamThreePA;
+	this->teamFTPercentage = this->teamFTM / this->teamFTA;
 }
 
 void Team::ListAllPlayers()

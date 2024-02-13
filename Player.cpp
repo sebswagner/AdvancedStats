@@ -72,11 +72,44 @@ void Player::getThreePointPercentage()
 	cout << "Your three point percentage is: ." << fixed << setprecision(0) << this->ThreePPercentage;
 }
 
-void Player::getFieldGoalPercentage()
+double Player::getFieldGoalsMade()
+{
+	return this->FGM;
+}
+
+double Player::getFieldGoalsAttemtped()
+{
+	return this->FGA;
+}
+
+double Player::getThreePointersMade()
+{
+	return this->ThreePM;
+}
+
+double Player::getThreePointersAttemtped()
+{
+	return this->ThreePA;
+}
+
+double Player::getFreeThrowsMade()
+{
+	return this->FTM;
+}
+
+double Player::getFreeThrowsAttemtped()
+{
+	return this->FTA;
+}
+
+double Player::getFieldGoalPercentage()
 {	
 	this->FGPercentage = (this->FGM / this->FGA) * 1000;
 
-	cout << "Your field goal percentage is: ." << fixed << setprecision(0) << this->FGPercentage << endl;
+	//cout << "Your field goal percentage is: ." << fixed << setprecision(0) << this->FGPercentage << endl;
+
+	return this->FGM;
+	return this->FGA;
 }
 
 void Player::getFreeThrowPercentage()
@@ -91,10 +124,11 @@ string Player::getName()
 	return this->playerName;
 }
 
-void Player::settemporarySettingFunction(int prviKurac, int drugiKurac)
+int Player::getMinutesPlayed()
 {
-	teamORB = prviKurac;
-	oppDRB = drugiKurac;
+	this->inGameTime = (this->MinutesPlayed * 60) + this->SecondsPlayed;
+	
+	return inGameTime;
 }
 
 int Player::getPlusMinus(int plusMinus)

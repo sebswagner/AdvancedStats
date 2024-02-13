@@ -16,14 +16,20 @@ public:
     void getBasicBoxScoreStats();
     void calculateAdvancedStatistics();
 
-    void getThreePointPercentage();
-    void getFieldGoalPercentage();
+    double getFieldGoalsMade();
+    double getFieldGoalsAttemtped();
+    double getThreePointersMade();
+    double getThreePointersAttemtped();
+    double getFreeThrowsMade();
+    double getFreeThrowsAttemtped();
+
+    double getFieldGoalPercentage();
+    void getThreePointPercentage();    
     void getFreeThrowPercentage();
     
 
     string getName();
-
-    void settemporarySettingFunction(int prviKuraac, int drugiKurac);
+    int getMinutesPlayed();
 
     int getPlusMinus(int plusMinus);
 
