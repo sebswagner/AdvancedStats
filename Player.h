@@ -7,14 +7,31 @@ using namespace std;
 // #ifndef PLAYER_H  For some reason this doesn't work
 #define PLAYER_H
 
-
 class Player {
+protected:
+    string playerName, position;
+    int playerNumber;
+
 public:
     void setPlayerName(string name, int teamNumber);
+};
+
+class opposingPlayer :public Player {
+public:
+
+private:
+    
+};
+
+class myPlayer :public Player {
+public:
+    
 
     void setPlayerStats(int MinutesPlayed, int SecondsPlayed, double FieldGoalsMade, double FieldGoalsAttempted, double ThreePointersMade, double ThreePointersAttempted, double FreeThrowsMade, double FreeThrowsAttempted, int OffensiveRebounds, int DeffensiveRebounds, int Assists, int Blocks, int Turnovers, int PersonalFouls);
     void getBasicBoxScoreStats();
     void calculateAdvancedStatistics();
+
+    // Basic statistics
 
     double getFieldGoalsMade();
     double getFieldGoalsAttemtped();
@@ -30,11 +47,11 @@ public:
 
     string getName();
     int getMinutesPlayed();
-
     int getPlusMinus(int plusMinus);
 
 
     // Advanced metrics
+
     void getTrueShooting();
     void getEffectiveFGPercentage();
     void getORBpercentage();
@@ -49,8 +66,6 @@ public:
     void getUsagePercentage();
 
 private:
-    int playerNumber;
-    string playerName, position;
     int MinutesPlayed, SecondsPlayed, inGameTime;
     double FGA, FGM, FGPercentage;
     double ThreePM, ThreePA, ThreePPercentage;

@@ -16,7 +16,7 @@ class Team {
 		void setOpponentTeamStatistics(int opponentPossessions, int opponentORB, int opponentDRB, int opponentTRB, int opponentFGA, int opponent3PA);
 
 	private:
-		std::vector<Player> playerList;
+		std::vector<myPlayer> playerList;
 
 		int oppPossessions;
 		int oppORB;
@@ -37,4 +37,13 @@ class Team {
 		int teamSTL = 0;
 		int teamPF = 0;
 		int teamplusMinus = 0;
+
+		//team 
+
+		double TeamThreePointAttemptRate, TeamFreeThrowAttemptRate;
+		double TeamTrueShootingAttempts, TeamTrueShootingPercentage;
+		double TeamEffectiveFieldGoalPercentage;
+		double TeamOffensiveReboundPercentage, TeamDeffensiveReboundPercentage, TeamTotalReboundPercentage;
+		double TeamAssistPercentage;
+		double TeamStealPercentage, TeamBlockPercentage, TeamTurnoverPercentage, TeamUsagePercentage;
 };
