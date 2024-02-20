@@ -52,18 +52,18 @@ public:
 
     // Advanced metrics
 
-    void getTrueShooting();
-    void getEffectiveFGPercentage();
-    void getORBpercentage();
-    void getDRBpercentage();
-    void getTRBpercentage();
-    void getASTPercentage();
-    void getThreePointAttemptRate();
-    void getFreeThrowAttemptRate();
-    void getStealPercentage();
-    void getBlockPercentage();
-    void getTurnoverPercentage();
-    void getUsagePercentage();
+    double getTrueShooting();
+    double getEffectiveFGPercentage();
+    double getORBpercentage();
+    double getDRBpercentage();
+    double getTRBpercentage();
+    double getASTPercentage();
+    double getThreePointAttemptRate();
+    double getFreeThrowAttemptRate();
+    double getStealPercentage();
+    double getBlockPercentage();
+    double getTurnoverPercentage();
+    double getUsagePercentage();
 
 private:
     int MinutesPlayed, SecondsPlayed, inGameTime;

@@ -150,6 +150,8 @@ void myPlayer::getTrueShooting()
 	cout << "True shooting attempts: ." << fixed << setprecision(0) << this->TrueShootingAttempts << endl;
 
 	cout << "True shooting percentage: ." << fixed << setprecision(0) << this->TrueShootingPercentage << endl;
+
+	return TrueShootingPercentage;
 }
 
 void myPlayer::getEffectiveFGPercentage()

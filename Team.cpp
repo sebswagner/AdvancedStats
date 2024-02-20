@@ -24,7 +24,6 @@ void Team::calculateTeamStats()
 		this->teamThreePA += playerList[i].getThreePointersAttemtped();
 		this->teamFTM += playerList[i].getFreeThrowsMade();
 		this->teamFTA += playerList[i].getFreeThrowsAttemtped();
-
 	}
 
 	this->teamInGameTime = this->teamMinutesPlayed / 60;
