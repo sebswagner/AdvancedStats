@@ -19,8 +19,9 @@ public:
 class opposingPlayer :public Player {
 public:
 
+
 private:
-    
+    string teamName;
 };
 
 class myPlayer :public Player {

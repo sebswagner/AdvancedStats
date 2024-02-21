@@ -8,14 +8,14 @@ using namespace std;
 #include "Player.h"
 #include "Team.h"
 
-void Team::addPlayer(const Player& player)
+void Team::addPlayer(const myPlayer& player)
 {
 	this->playerList.push_back(player);
 	
 }
 
-void Team::calculateTeamStats()
-{
+void Team::calcSumOfTeamStats()
+{	
 	for (int i = 0; i < this->playerList.size(); i++) {
 		this->teamMinutesPlayed += playerList[i].getMinutesPlayed();
 		this->teamFGA += playerList[i].getFieldGoalsMade();
@@ -25,11 +25,20 @@ void Team::calculateTeamStats()
 		this->teamFTM += playerList[i].getFreeThrowsMade();
 		this->teamFTA += playerList[i].getFreeThrowsAttemtped();
 	}
+}
 
+void Team::calculateTeamStats()
+{
 	this->teamInGameTime = this->teamMinutesPlayed / 60;
 	this->teamFGPercentage = this->teamFGM / this->teamFGA;
 	this->teamThreePPercentage = this->teamThreePM / this->teamThreePA;
 	this->teamFTPercentage = this->teamFTM / this->teamFTA;
+}
+
+void Team::calcualteTeamAdvancedStats()
+{
+
+	
 }
 
 void Team::ListAllPlayers()
@@ -37,6 +46,66 @@ void Team::ListAllPlayers()
 	for (int i = 0; i < this->playerList.size(); i++) {
 		cout << playerList[i].getName() << endl;
 	}
+}
+
+double Team::getTeamTrueShooting()
+{
+	this->TeamTrueShootingAttempts = (this->teamFTA * 0.44 + this->teamFGA);
+	this->TeamTrueShootingPercentage = (this->teamPTS / (2 * this->TeamTrueShootingAttempts));
+
+	this->TeamTrueShootingAttempts = this->TeamTrueShootingAttempts * 1000;
+	this->TeamTrueShootingPercentage = this->TeamTrueShootingPercentage * 1000;
+
+	return TeamTrueShootingPercentage;
+}
+
+double Team::getTeamEffectiveFGPercentage()
+{
+	this->TeamEffectiveFieldGoalPercentage = ((this->teamFGM + 0.5 * this->teamThreePM) / this->teamFGA) * 1000;
+
+	return TeamEffectiveFieldGoalPercentage;
+}
+
+double Team::getTeamORBpercentage()
+{
+	this->TeamOffensiveReboundPercentage = ((100 * this->teamOffensiveRB * ((static_cast<double>(240) * 60) / 5)) / (this->teamInGameTime * (teamOffensiveRB + oppDRB)));
+
+	return TeamOffensiveReboundPercentage;
+}
+
+double Team::getTeamDRBpercentage()
+{
+	this->TeamDeffensiveReboundPercentage = ((100 * this->teamDeffensiveRB * (static_cast<double>(240) / 5)) / (this->teamInGameTime * (teamDeffensiveRB + oppORB)));
+
+	return TeamDeffensiveReboundPercentage;
+}
+
+double Team::getTeamTRBpercentage()
+{
+	this->TeamTotalReboundPercentage = ((100 * this->teamTotalRB * (static_cast<double>(240) / 5)) / (this->teamInGameTime * (teamTotalRB + oppTRB)));
+
+	return TeamTotalReboundPercentage;
+}
+
+double Team::getTeamASTPercentage()
+{
+	this->TeamAssistPercentage = (100 * this->teamAST / (((this->teamInGameTime / (static_cast<double>(240) / 5)) * this->teamFGM) - this->teamFGM));
+
+	return TeamAssistPercentage;
+}
+
+double Team::getTeamThreePointAttemptRate()
+{
+	this->TeamThreePointAttemptRate = (this->teamThreePA / this->teamFGA) * 1000;
+
+	return TeamThreePointAttemptRate;
+}
+
+double Team::getTeamFreeThrowAttemptRate()
+{
+	this->TeamFreeThrowAttemptRate = (this->teamFTA / this->teamFGA) * 1000;
+
+	return TeamFreeThrowAttemptRate;
 }
 
 void Team::setOpponentTeamStatistics(int opponentPossessions, int opponentORB, int opponentDRB, int opponentTRB, int opponentFGA, int opponent3PA)

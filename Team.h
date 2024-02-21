@@ -9,9 +9,22 @@ using namespace std;
 
 class Team {
 	public:
-		void addPlayer(const Player& player);
+		void addPlayer(const myPlayer& player);
+		
+		void calcSumOfTeamStats();
+
 		void calculateTeamStats();
+		void calcualteTeamAdvancedStats();
 		void ListAllPlayers();
+
+		double getTeamTrueShooting();
+		double getTeamEffectiveFGPercentage();
+		double getTeamORBpercentage();
+		double getTeamDRBpercentage();
+		double getTeamTRBpercentage();
+		double getTeamASTPercentage();
+		double getTeamThreePointAttemptRate();
+		double getTeamFreeThrowAttemptRate();
 
 		void setOpponentTeamStatistics(int opponentPossessions, int opponentORB, int opponentDRB, int opponentTRB, int opponentFGA, int opponent3PA);
 
@@ -39,6 +52,15 @@ class Team {
 		int teamplusMinus = 0;
 
 		//team 
+
+		double TeamThreePointAttemptRate, TeamFreeThrowAttemptRate;
+		double TeamTrueShootingAttempts, TeamTrueShootingPercentage;
+		double TeamEffectiveFieldGoalPercentage;
+		double TeamOffensiveReboundPercentage, TeamDeffensiveReboundPercentage, TeamTotalReboundPercentage;
+		double TeamAssistPercentage;
+		double TeamStealPercentage, TeamBlockPercentage, TeamTurnoverPercentage, TeamUsagePercentage;
+
+		//team Advanced stats
 
 		double TeamThreePointAttemptRate, TeamFreeThrowAttemptRate;
 		double TeamTrueShootingAttempts, TeamTrueShootingPercentage;
