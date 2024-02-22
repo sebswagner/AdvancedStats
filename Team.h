@@ -4,6 +4,7 @@
 #include <cmath>
 #include <vector>
 using namespace std;
+#include "Player.h"
 
 #define TEAM_H
 
@@ -25,6 +26,10 @@ class Team {
 		double getTeamASTPercentage();
 		double getTeamThreePointAttemptRate();
 		double getTeamFreeThrowAttemptRate();
+		double getTeamStealPercentage();
+		double getTeamBlockPercentage();
+		double getTeamTurnoverPercentage();
+		double getTeamUsagePercentage();
 
 		void setOpponentTeamStatistics(int opponentPossessions, int opponentORB, int opponentDRB, int opponentTRB, int opponentFGA, int opponent3PA);
 
@@ -52,15 +57,6 @@ class Team {
 		int teamplusMinus = 0;
 
 		//team 
-
-		double TeamThreePointAttemptRate, TeamFreeThrowAttemptRate;
-		double TeamTrueShootingAttempts, TeamTrueShootingPercentage;
-		double TeamEffectiveFieldGoalPercentage;
-		double TeamOffensiveReboundPercentage, TeamDeffensiveReboundPercentage, TeamTotalReboundPercentage;
-		double TeamAssistPercentage;
-		double TeamStealPercentage, TeamBlockPercentage, TeamTurnoverPercentage, TeamUsagePercentage;
-
-		//team Advanced stats
 
 		double TeamThreePointAttemptRate, TeamFreeThrowAttemptRate;
 		double TeamTrueShootingAttempts, TeamTrueShootingPercentage;

@@ -5,7 +5,7 @@
 #include <limits>
 using namespace std;
 
-#include "Player.h"
+
 #include "Team.h"
 
 void Team::addPlayer(const myPlayer& player)
@@ -106,6 +106,34 @@ double Team::getTeamFreeThrowAttemptRate()
 	this->TeamFreeThrowAttemptRate = (this->teamFTA / this->teamFGA) * 1000;
 
 	return TeamFreeThrowAttemptRate;
+}
+
+double Team::getTeamStealPercentage()
+{
+	this->TeamStealPercentage = ((100 * (this->teamSTL * (static_cast <double>(240) / 5))) / (this->teamInGameTime / oppPossessions));
+
+	return TeamStealPercentage;
+}
+
+double Team::getTeamBlockPercentage()
+{
+	this->TeamBlockPercentage = ((100 * (this->teamBLK * (static_cast <double>(240) / 5))) / (this->teamInGameTime * (oppFGA - opp3PA)));
+
+	return TeamBlockPercentage;
+}
+
+double Team::getTeamTurnoverPercentage()
+{
+	this->TeamTurnoverPercentage = ((100 * this->teamTOV) / (this->teamFGA + 0.44 * this->teamFTA * this->teamTOV));
+
+	return 0.0;
+}
+
+double Team::getTeamUsagePercentage()
+{
+	this->TeamUsagePercentage = (100 * (this->teamFGA + 0.44 * this->teamFTA * this->teamTOV) * (static_cast <double>(40) / 5)) / (this->teamInGameTime * (teamFGA + 0.44 * teamFTA * teamTOV));
+
+	return TeamUsagePercentage;
 }
 
 void Team::setOpponentTeamStatistics(int opponentPossessions, int opponentORB, int opponentDRB, int opponentTRB, int opponentFGA, int opponent3PA)

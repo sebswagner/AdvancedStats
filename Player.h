@@ -28,9 +28,11 @@ class myPlayer :public Player {
 public:
     
 
-    void setPlayerStats(int MinutesPlayed, int SecondsPlayed, double FieldGoalsMade, double FieldGoalsAttempted, double ThreePointersMade, double ThreePointersAttempted, double FreeThrowsMade, double FreeThrowsAttempted, int OffensiveRebounds, int DeffensiveRebounds, int Assists, int Blocks, int Turnovers, int PersonalFouls);
+    void setPlayerStats(int MinutesPlayed, int SecondsPlayed, double FieldGoalsMade, double FieldGoalsAttempted, double ThreePointersMade, double ThreePointersAttempted, double FreeThrowsMade, double FreeThrowsAttempted, int OffensiveRebounds, int DeffensiveRebounds, int Assists, int Steals, int Blocks, int Turnovers, int PersonalFouls);
     void getBasicBoxScoreStats();
     void calculateAdvancedStatistics();
+
+    void printPlayerBasicStats();
 
     // Basic statistics
 
@@ -55,10 +57,13 @@ public:
 
     double getTrueShooting();
     double getEffectiveFGPercentage();
+    /* for now - mora ici u team jer su advanced funkcije
     double getORBpercentage();
     double getDRBpercentage();
     double getTRBpercentage();
     double getASTPercentage();
+    double getSTLPercentage();
+    */
     double getThreePointAttemptRate();
     double getFreeThrowAttemptRate();
     double getStealPercentage();
@@ -82,13 +87,13 @@ private:
 
 
     // prebaci u team.cpp
-    int teamORB , teamDRB, teamTRB;
+    int teamORB = 0 , teamDRB = 0, teamTRB = 0;
     int teamFTA, teamFTM, teamTOV;
     double teamFGM, teamFGA;
 
     //opponents Metrics
-    int oppPossesions;
-    int oppORB, oppDRB, oppTRB;
+    int oppPossessions;
+    int oppORB = 0, oppDRB = 0, oppTRB = 0;
     int oppFGA, opp3PA;
 
     //advanced metrics   
