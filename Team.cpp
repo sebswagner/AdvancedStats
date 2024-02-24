@@ -25,7 +25,15 @@ void Team::calcSumOfTeamStats()
 		this->teamFTM += playerList[i].getFreeThrowsMade();
 		this->teamFTA += playerList[i].getFreeThrowsAttemtped();
 	}
+	
+
+	cout << "Team minutes played: " << this->teamMinutesPlayed << endl;
 	cout << "Team Field Goals made: " << this->teamFGM << endl;
+	cout << "Team Field Goals attempted: " << this->teamFGA << endl;
+	cout << "Three pointers made: " << this->teamThreePM << endl;
+	cout << "Three pointers attempted: " << this->teamThreePA << endl;
+	cout << "Free Throws made: " << this->teamFTM << endl;
+	cout << "Free Throws attempted: " << this->teamFTA << endl;
 }
 
 void Team::calculateTeamStats()
@@ -34,6 +42,10 @@ void Team::calculateTeamStats()
 	this->teamFGPercentage = this->teamFGM / this->teamFGA;
 	this->teamThreePPercentage = this->teamThreePM / this->teamThreePA;
 	this->teamFTPercentage = this->teamFTM / this->teamFTA;
+
+	cout << "Team Field Goal Percentage: " << this->teamFGPercentage << endl;
+	cout << "Team Three Point Percentage: " << this->teamThreePPercentage << endl;
+	cout << "Team Free Throw Percentage: " << this->teamFTPercentage << endl;
 }
 
 void Team::calcualteTeamAdvancedStats()

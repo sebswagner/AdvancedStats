@@ -32,15 +32,15 @@ int main() {
     double teamORB = 11;
     double teamDRB = 33;
 
-    Lillard.setPlayerStats(34, 58, 7, 21, 3, 13, 7, 7, 2, 3, 7, 1, 0, 4, 2);
-    Giannis.setPlayerStats(36, 37, 15, 17, 0, 0, 5, 9, 0, 4, 12, 0, 0, 1, 5);
-    Brook.setPlayerStats(34, 37, 5, 14, 3, 13, 7, 7, 2, 9, 2, 2, 4, 1, 2);
-    Malik.setPlayerStats(29, 45, 3, 10, 3, 10, 0, 0, 0, 2, 0, 2, 0, 0, 4);
-    Crowder.setPlayerStats(24, 8, 2, 4, 0, 2, 0, 0, 1, 4, 0, 1, 0, 1, 2);
-    Portis.setPlayerStats(24, 46, 7, 12, 1, 1, 0, 0, 3, 4, 2, 0, 0, 2, 1);
-    Pat.setPlayerStats(23, 52, 1, 3, 0, 1, 0, 0, 2, 3, 0, 2, 1, 2, 1);
-    Beverley.setPlayerStats(14, 13, 0, 4, 0, 4, 1, 2, 1, 3, 4, 0, 1, 1, 1);
-    Green.setPlayerStats(14, 5, 2, 4, 2, 4, 0, 0, 0, 1, 1, 1, 0, 1, 2);
+    Lillard.setPlayerStats  (34, 58, 7, 21, 3, 13, 7, 7, 2, 3, 7, 1, 0, 4, 2);
+    Giannis.setPlayerStats  (36, 37, 15, 17, 0, 0, 5, 9, 0, 4, 12, 0, 0, 1, 5);
+    Brook.setPlayerStats    (34, 37, 5, 14, 2, 9, 2, 2, 2, 9, 2, 2, 4, 1, 2);
+    Malik.setPlayerStats    (29, 45, 3, 10, 3, 10, 0, 0, 0, 2, 0, 2, 0, 0, 4);
+    Crowder.setPlayerStats  (24, 8, 2, 4, 0, 2, 0, 0, 1, 4, 0, 1, 0, 1, 2);
+    Portis.setPlayerStats   (24, 46, 7, 12, 1, 1, 0, 0, 3, 4, 2, 0, 0, 2, 1);
+    Pat.setPlayerStats      (23, 52, 1, 3, 0, 1, 0, 0, 2, 3, 0, 2, 1, 2, 1);
+    Beverley.setPlayerStats (14, 13, 0, 4, 0, 4, 1, 2, 1, 3, 4, 0, 1, 1, 1);
+    Green.setPlayerStats    (14, 5, 2, 4, 2, 4, 0, 0, 0, 1, 1, 1, 0, 1, 2);
     JacksonJr.setPlayerStats(2, 59, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2);
 
     Bucks.addPlayer(Lillard);
@@ -55,6 +55,7 @@ int main() {
     Bucks.addPlayer(JacksonJr);
 
     Bucks.calcSumOfTeamStats();
+    Bucks.calculateTeamStats();
 
 
     
