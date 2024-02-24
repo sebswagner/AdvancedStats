@@ -18,13 +18,14 @@ void Team::calcSumOfTeamStats()
 {	
 	for (int i = 0; i < this->playerList.size(); i++) {
 		this->teamMinutesPlayed += playerList[i].getMinutesPlayed();
-		this->teamFGA += playerList[i].getFieldGoalsMade();
+		this->teamFGM += playerList[i].getFieldGoalsMade();
 		this->teamFGA += playerList[i].getFieldGoalsAttemtped();
 		this->teamThreePM += playerList[i].getThreePointersMade();
 		this->teamThreePA += playerList[i].getThreePointersAttemtped();
 		this->teamFTM += playerList[i].getFreeThrowsMade();
 		this->teamFTA += playerList[i].getFreeThrowsAttemtped();
 	}
+	cout << "Team Field Goals made: " << this->teamFGM << endl;
 }
 
 void Team::calculateTeamStats()

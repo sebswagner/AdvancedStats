@@ -52,12 +52,12 @@ void myPlayer::calculateAdvancedStatistics()
 	this->getEffectiveFGPercentage();
 	this->getThreePointAttemptRate();
 	this->getFreeThrowAttemptRate();
-
+	/*
 	this->getORBpercentage();
 	this->getDRBpercentage();
 	this->getTRBpercentage();
 	this->getASTPercentage();
-
+	*/
 	this->getStealPercentage();
 	this->getBlockPercentage();
 	this->getTurnoverPercentage();
@@ -172,7 +172,7 @@ double myPlayer::getEffectiveFGPercentage()
 
 	return EffectiveFieldGoalPercentage;
 }
-
+/*
 double myPlayer::getORBpercentage()
 {
 	this->OffensiveReboundPercentage = (100 * (this->OffensiveRB * static_cast<double>(2880))) / (this->inGameTime * (teamORB + oppDRB));
@@ -209,7 +209,7 @@ double myPlayer::getASTPercentage()
 
 	return AssistPercentage;
 }
-
+*/
 double myPlayer::getThreePointAttemptRate()
 {
 	this->ThreePointAttemptRate = (this->ThreePA / this->FGA) * 1000;
@@ -262,4 +262,10 @@ double myPlayer::getUsagePercentage()
 	cout << "Usage percentage: " << fixed << setprecision(3) << this->UsagePercentage << endl;
 
 	return UsagePercentage;
+}
+
+myPlayer::myPlayer(int MinutesPlayed, int SecondsPlayed, double FieldGoalsMade, double FieldGoalsAttempted, double ThreePointersMade, double ThreePointersAttempted, double FreeThrowsMade, double FreeThrowsAttempted, int OffensiveRebounds, int DeffensiveRebounds, int Assists, int Steals, int Blocks, int Turnovers, int PersonalFouls)
+{
+	setPlayerStats(MinutesPlayed, SecondsPlayed, FieldGoalsMade, FieldGoalsAttempted, ThreePointersMade, ThreePointersAttempted, FreeThrowsMade, FreeThrowsAttempted, OffensiveRebounds, DeffensiveRebounds, Assists, Steals, Blocks, Turnovers, PersonalFouls);
+
 }

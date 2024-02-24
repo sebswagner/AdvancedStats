@@ -70,6 +70,8 @@ public:
     double getBlockPercentage();
     double getTurnoverPercentage();
     double getUsagePercentage();
+    myPlayer() {};
+    myPlayer(int MinutesPlayed, int SecondsPlayed, double FieldGoalsMade, double FieldGoalsAttempted, double ThreePointersMade, double ThreePointersAttempted, double FreeThrowsMade, double FreeThrowsAttempted, int OffensiveRebounds, int DeffensiveRebounds, int Assists, int Steals, int Blocks, int Turnovers, int PersonalFouls);
 
 private:
     int MinutesPlayed, SecondsPlayed, inGameTime;
