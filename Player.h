@@ -35,11 +35,16 @@ public:
     void printPlayerBasicStats();
 
     // Basic statistics
+    struct MyStruct
+    {
 
+    };
     double getFieldGoalsMade();
     double getFieldGoalsAttemtped();
+
     double getThreePointersMade();
     double getThreePointersAttemtped();
+
     double getFreeThrowsMade();
     double getFreeThrowsAttemtped();
 
@@ -47,29 +52,44 @@ public:
     void getThreePointPercentage();    
     void getFreeThrowPercentage();
     
-
     string getName();
     int getMinutesPlayed();
     int getPlusMinus(int plusMinus);
+
+    double getORebounds();
+    double getDRebounds();
+    double getTRebounds();
+    double getAssists();
+    double getSteals();
+    double getBlocks();
+    double getTurnovers();
+
+
+
+    
 
 
     // Advanced metrics
 
     double getTrueShooting();
     double getEffectiveFGPercentage();
+    double getThreePointAttemptRate();
+    double getFreeThrowAttemptRate();
     /* for now - mora ici u team jer su advanced funkcije
+    * 
     double getORBpercentage();
     double getDRBpercentage();
     double getTRBpercentage();
     double getASTPercentage();
     double getSTLPercentage();
-    */
-    double getThreePointAttemptRate();
-    double getFreeThrowAttemptRate();
+    
     double getStealPercentage();
     double getBlockPercentage();
     double getTurnoverPercentage();
     double getUsagePercentage();
+    */
+   
+
     myPlayer() {};
     myPlayer(int MinutesPlayed, int SecondsPlayed, double FieldGoalsMade, double FieldGoalsAttempted, double ThreePointersMade, double ThreePointersAttempted, double FreeThrowsMade, double FreeThrowsAttempted, int OffensiveRebounds, int DeffensiveRebounds, int Assists, int Steals, int Blocks, int Turnovers, int PersonalFouls);
 
@@ -103,9 +123,7 @@ private:
     double ThreePointAttemptRate, FreeThrowAttemptRate;
     double TrueShootingAttempts, TrueShootingPercentage;
     double EffectiveFieldGoalPercentage;
-    double OffensiveReboundPercentage, DeffensiveReboundPercentage, TotalReboundPercentage;
-    double AssistPercentage;
-    double StealPercentage, BlockPercentage, TurnoverPercentage, UsagePercentage;
+
     
 
     //pointeri

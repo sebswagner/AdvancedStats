@@ -57,11 +57,12 @@ void myPlayer::calculateAdvancedStatistics()
 	this->getDRBpercentage();
 	this->getTRBpercentage();
 	this->getASTPercentage();
-	*/
+	
 	this->getStealPercentage();
 	this->getBlockPercentage();
 	this->getTurnoverPercentage();
 	this->getUsagePercentage();
+	*/
 }
 
 void myPlayer::printPlayerBasicStats()
@@ -79,7 +80,7 @@ void myPlayer::getThreePointPercentage()
 {
 	this->ThreePPercentage = (this->ThreePM / this->ThreePA) * 1000;
 
-	cout << "Your three point percentage is: ." << fixed << setprecision(0) << this->ThreePPercentage;
+	//cout << "Your three point percentage is: ." << fixed << setprecision(0) << this->ThreePPercentage;
 }
 
 double myPlayer::getFieldGoalsMade()
@@ -126,7 +127,7 @@ void myPlayer::getFreeThrowPercentage()
 {
 	this->FTPercentage = (this->FTM / this->FTA) * 1000;
 
-	cout << "Your free throw percentage is: ." << fixed << setprecision(0) << this->FTPercentage;
+	//cout << "Your free throw percentage is: ." << fixed << setprecision(0) << this->FTPercentage;
 }
 
 string myPlayer::getName()
@@ -147,8 +148,44 @@ int myPlayer::getPlusMinus(int plusMinus)
 	return 0;
 }
 
+double myPlayer::getORebounds()
+{
+	return this->OffensiveRB;
+}
+
+double myPlayer::getDRebounds()
+{
+	return this->DeffensiveRB;
+}
+
+double myPlayer::getTRebounds()
+{
+	return this->TotalRB;
+}
+
+double myPlayer::getAssists()
+{
+	return this->AST;
+}
+
+double myPlayer::getSteals()
+{
+	return this->STL;
+}
+
+double myPlayer::getBlocks()
+{
+	return this->BLK;
+}
+
+double myPlayer::getTurnovers()
+{
+	return this->TOV;
+}
+
 double myPlayer::getTrueShooting()
 {
+
 	this->TrueShootingAttempts = (this->FTA * 0.44 + this->FGA);
 	this->TrueShootingPercentage = (this->PTS / (2 * this->TrueShootingAttempts));
 
@@ -158,7 +195,7 @@ double myPlayer::getTrueShooting()
 	/* Not needed for now
 	cout << "True shooting attempts: ." << fixed << setprecision(0) << this->TrueShootingAttempts << endl; 
 	*/
-	cout << "True shooting percentage: ." << fixed << setprecision(0) << this->TrueShootingPercentage << endl;
+	//cout << "True shooting percentage: ." << fixed << setprecision(0) << this->TrueShootingPercentage << endl;
 	
 
 	return TrueShootingPercentage;
@@ -168,7 +205,7 @@ double myPlayer::getEffectiveFGPercentage()
 {
 	this->EffectiveFieldGoalPercentage = ((this->FGM + 0.5 * this->ThreePM) / this->FGA) * 1000;
 
-	cout << "Effective field goal percentage: ." << fixed << setprecision(0) << this->EffectiveFieldGoalPercentage << endl;
+	//cout << "Effective field goal percentage: ." << fixed << setprecision(0) << this->EffectiveFieldGoalPercentage << endl;
 
 	return EffectiveFieldGoalPercentage;
 }
@@ -214,7 +251,7 @@ double myPlayer::getThreePointAttemptRate()
 {
 	this->ThreePointAttemptRate = (this->ThreePA / this->FGA) * 1000;
 
-	cout << "Three point attempt rate is: ." << fixed << setprecision(0) << this->ThreePointAttemptRate << endl;
+	//cout << "Three point attempt rate is: ." << fixed << setprecision(0) << this->ThreePointAttemptRate << endl;
 
 	return ThreePointAttemptRate;
 }
@@ -223,11 +260,11 @@ double myPlayer::getFreeThrowAttemptRate()
 {
 	this->FreeThrowAttemptRate = (this->FTA / this->FGA) * 1000;
 
-	cout << "Free throw attempt rate is: ." << fixed << setprecision(0) << this->FreeThrowAttemptRate << endl;
+	//cout << "Free throw attempt rate is: ." << fixed << setprecision(0) << this->FreeThrowAttemptRate << endl;
 
 	return FreeThrowAttemptRate;
 }
-
+/*
 double myPlayer::getStealPercentage()
 {
 	this->StealPercentage = ((100 * (this->STL * (static_cast <double>(240) / 5))) / (this->inGameTime / oppPossessions));
@@ -263,7 +300,7 @@ double myPlayer::getUsagePercentage()
 
 	return UsagePercentage;
 }
-
+*/
 myPlayer::myPlayer(int MinutesPlayed, int SecondsPlayed, double FieldGoalsMade, double FieldGoalsAttempted, double ThreePointersMade, double ThreePointersAttempted, double FreeThrowsMade, double FreeThrowsAttempted, int OffensiveRebounds, int DeffensiveRebounds, int Assists, int Steals, int Blocks, int Turnovers, int PersonalFouls)
 {
 	setPlayerStats(MinutesPlayed, SecondsPlayed, FieldGoalsMade, FieldGoalsAttempted, ThreePointersMade, ThreePointersAttempted, FreeThrowsMade, FreeThrowsAttempted, OffensiveRebounds, DeffensiveRebounds, Assists, Steals, Blocks, Turnovers, PersonalFouls);

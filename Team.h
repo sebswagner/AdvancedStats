@@ -10,13 +10,26 @@ using namespace std;
 
 class Team {
 	public:
+		int oppPossessions;
+		int oppORB;
+		int oppDRB;
+		int oppTRB;
+		int oppFGA;
+		int opp3PA;
+
 		void addPlayer(const myPlayer& player);
 		
 		void calcSumOfTeamStats();
 
 		void calculateTeamStats();
-		void calcualteTeamAdvancedStats();
+		void calcTeamAdvStats();
+		void calcIndAdvStats();
 		void ListAllPlayers();
+
+		double getTeamORB();
+		double getTeamDRB();
+		double getTeamTRB();
+		double getTeamFGM();
 
 		double getTeamTrueShooting();
 		double getTeamEffectiveFGPercentage();
@@ -36,12 +49,20 @@ class Team {
 	private:
 		std::vector<myPlayer> playerList;
 
-		int oppPossessions;
-		int oppORB;
-		int oppDRB;
-		int oppTRB;
-		int oppFGA;
-		int opp3PA;		
+		struct AdvPlayerStruct
+		{
+			double TrueShootingPercentage;
+			double EffectiveFieldGoalPercentage;
+			double ThreePointAttemptRate, FreeThrowAttemptRate;			
+			
+
+			double OffensiveReboundPercentage, DeffensiveReboundPercentage, TotalReboundPercentage;
+			double AssistPercentage, StealPercentage, BlockPercentage, TurnoverPercentage, UsagePercentage;
+		};
+
+		std::vector<AdvPlayerStruct> AdvPlayerValues;
+
+			
 		
 		int teamMinutesPlayed, teamSecondsPlayed, teamInGameTime;
 		double teamFGA, teamFGM, teamFGPercentage;
@@ -56,6 +77,7 @@ class Team {
 		int teamPF = 0;
 		int teamplusMinus = 0;
 
+		
 		//team 
 
 		double TeamThreePointAttemptRate, TeamFreeThrowAttemptRate;

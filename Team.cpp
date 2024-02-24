@@ -26,7 +26,7 @@ void Team::calcSumOfTeamStats()
 		this->teamFTA += playerList[i].getFreeThrowsAttemtped();
 	}
 	
-
+	/*
 	cout << "Team minutes played: " << this->teamMinutesPlayed << endl;
 	cout << "Team Field Goals made: " << this->teamFGM << endl;
 	cout << "Team Field Goals attempted: " << this->teamFGA << endl;
@@ -34,6 +34,7 @@ void Team::calcSumOfTeamStats()
 	cout << "Three pointers attempted: " << this->teamThreePA << endl;
 	cout << "Free Throws made: " << this->teamFTM << endl;
 	cout << "Free Throws attempted: " << this->teamFTA << endl;
+	*/
 }
 
 void Team::calculateTeamStats()
@@ -42,16 +43,47 @@ void Team::calculateTeamStats()
 	this->teamFGPercentage = this->teamFGM / this->teamFGA;
 	this->teamThreePPercentage = this->teamThreePM / this->teamThreePA;
 	this->teamFTPercentage = this->teamFTM / this->teamFTA;
-
+	/*
 	cout << "Team Field Goal Percentage: " << this->teamFGPercentage << endl;
 	cout << "Team Three Point Percentage: " << this->teamThreePPercentage << endl;
 	cout << "Team Free Throw Percentage: " << this->teamFTPercentage << endl;
+	*/
 }
 
-void Team::calcualteTeamAdvancedStats()
+void Team::calcTeamAdvStats()
 {
 
 	
+}
+
+void Team::calcIndAdvStats()
+{
+	
+	
+	for (int i = 0; i < this->playerList.size(); i++) {
+		AdvPlayerStruct tempAdvPlayer;
+
+		playerList[i].getBasicBoxScoreStats();
+
+		tempAdvPlayer.TrueShootingPercentage = playerList[i].getTrueShooting();
+		tempAdvPlayer.EffectiveFieldGoalPercentage = playerList[i].getEffectiveFGPercentage();
+		tempAdvPlayer.ThreePointAttemptRate = playerList[i].getThreePointAttemptRate();
+		tempAdvPlayer.FreeThrowAttemptRate = playerList[i].getFreeThrowAttemptRate();
+		
+		tempAdvPlayer.OffensiveReboundPercentage = (100 * (playerList[i].getORebounds() * static_cast<double>(2880))) / (playerList[i].getMinutesPlayed() * (getTeamORB() + this->oppDRB));
+		tempAdvPlayer.DeffensiveReboundPercentage = (100 * playerList[i].getDRebounds() * static_cast<double>(2880)) / (playerList[i].getMinutesPlayed() * (getTeamDRB() + this->oppORB));
+
+		tempAdvPlayer.TotalReboundPercentage = (100 * playerList[i].getTRebounds() * static_cast<double>(2880)) / (playerList[i].getMinutesPlayed() * (getTeamTRB() + this->oppTRB));
+		tempAdvPlayer.AssistPercentage = (100 * playerList[i].getAssists() / (((playerList[i].getMinutesPlayed() / (static_cast<double>(2880)) * this->teamFGM) - playerList[i].getFieldGoalsMade())));
+		// tempAdvPlayer.StealPercentage = ((100 * (playerList[i].getSteals() * static_cast<double>(2880))) / (playerList[i].getMinutesPlayed() / oppPossessions));
+		tempAdvPlayer.BlockPercentage = ((100 * (playerList[i].getBlocks()  * static_cast<double>(2880))) / (playerList[i].getMinutesPlayed() * (this->oppFGA - this->opp3PA)));
+		tempAdvPlayer.TurnoverPercentage = ((100 * playerList[i].getTurnovers()) / ((playerList[i].getFieldGoalsAttemtped() + 0.44 * playerList[i].getFreeThrowsAttemtped() * playerList[i].getTurnovers())));
+		tempAdvPlayer.UsagePercentage = (100 * (playerList[i].getFieldGoalsAttemtped() + 0.44 * playerList[i].getFreeThrowsAttemtped() * playerList[i].getTurnovers()) * (static_cast<double>(2880)) / (playerList[i].getMinutesPlayed() * (this->teamFGA + 0.44 * this->teamFTA * this->teamTOV)));
+		
+		AdvPlayerValues.push_back(tempAdvPlayer);
+
+		cout << i+1 << ". Player's True Shooting Percentage: ." << fixed << setprecision(0) << AdvPlayerValues[i].TrueShootingPercentage << endl;
+	}
 }
 
 void Team::ListAllPlayers()
@@ -59,6 +91,26 @@ void Team::ListAllPlayers()
 	for (int i = 0; i < this->playerList.size(); i++) {
 		cout << playerList[i].getName() << endl;
 	}
+}
+
+double Team::getTeamORB()
+{
+	return this->teamOffensiveRB;
+}
+
+double Team::getTeamDRB()
+{
+	return this->teamDeffensiveRB;
+}
+
+double Team::getTeamTRB()
+{
+	return this->teamTotalRB;
+}
+
+double Team::getTeamFGM()
+{
+	return this->teamFGM;
 }
 
 double Team::getTeamTrueShooting()

@@ -26,8 +26,11 @@ int main() {
 
      Team Bucks;
 
-    double oppDRB = 33;
-    double oppORB = 7;
+    Bucks.oppDRB = 33;
+    Bucks.oppORB = 7;
+    Bucks.oppTRB = 40;
+    Bucks.oppFGA = 83;
+    Bucks.opp3PA = 26;
 
     double teamORB = 11;
     double teamDRB = 33;
@@ -57,6 +60,9 @@ int main() {
     Bucks.calcSumOfTeamStats();
     Bucks.calculateTeamStats();
 
+    Bucks.calcIndAdvStats();
+
+    // Ubaci funkciju koja uzima values od protivnickog ekipe
 
     
 
