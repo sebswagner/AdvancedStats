@@ -24,7 +24,16 @@ void Team::calcSumOfTeamStats()
 		this->teamThreePA += playerList[i].getThreePointersAttemtped();
 		this->teamFTM += playerList[i].getFreeThrowsMade();
 		this->teamFTA += playerList[i].getFreeThrowsAttemtped();
+		this->teamOffensiveRB += playerList[i].getORebounds();
+		this->teamDeffensiveRB += playerList[i].getDRebounds();
+
+		this->teamAST += playerList[i].getAssists();
+		this->teamSTL += playerList[i].getSteals();
+		this->teamBLK += playerList[i].getBlocks();
+		this->teamTOV += playerList[i].getTurnovers();
 	}
+
+	this->teamTotalRB = this->teamOffensiveRB + this->teamDeffensiveRB;
 	
 	/*
 	cout << "Team minutes played: " << this->teamMinutesPlayed << endl;
@@ -70,19 +79,19 @@ void Team::calcIndAdvStats()
 		tempAdvPlayer.ThreePointAttemptRate = playerList[i].getThreePointAttemptRate();
 		tempAdvPlayer.FreeThrowAttemptRate = playerList[i].getFreeThrowAttemptRate();
 		
-		tempAdvPlayer.OffensiveReboundPercentage = (100 * (playerList[i].getORebounds() * static_cast<double>(2880))) / (playerList[i].getMinutesPlayed() * (getTeamORB() + this->oppDRB));
-		tempAdvPlayer.DeffensiveReboundPercentage = (100 * playerList[i].getDRebounds() * static_cast<double>(2880)) / (playerList[i].getMinutesPlayed() * (getTeamDRB() + this->oppORB));
+		tempAdvPlayer.OffensiveReboundPercentage = (100 * (playerList[i].getORebounds() * static_cast<double>(2880))) / (playerList[i].getMinutesPlayed() * (this->teamOffensiveRB + this->oppDRB));
+		tempAdvPlayer.DeffensiveReboundPercentage = (100 * (playerList[i].getDRebounds() * static_cast<double>(2880))) / (playerList[i].getMinutesPlayed() * (this->teamDeffensiveRB + this->oppORB));
 
-		tempAdvPlayer.TotalReboundPercentage = (100 * playerList[i].getTRebounds() * static_cast<double>(2880)) / (playerList[i].getMinutesPlayed() * (getTeamTRB() + this->oppTRB));
+		tempAdvPlayer.TotalReboundPercentage = (100 * playerList[i].getTRebounds() * static_cast<double>(2880)) / (playerList[i].getMinutesPlayed() * (this->teamTotalRB + this->oppTRB));
 		tempAdvPlayer.AssistPercentage = (100 * playerList[i].getAssists() / (((playerList[i].getMinutesPlayed() / (static_cast<double>(2880)) * this->teamFGM) - playerList[i].getFieldGoalsMade())));
-		// tempAdvPlayer.StealPercentage = ((100 * (playerList[i].getSteals() * static_cast<double>(2880))) / (playerList[i].getMinutesPlayed() / oppPossessions));
-		tempAdvPlayer.BlockPercentage = ((100 * (playerList[i].getBlocks()  * static_cast<double>(2880))) / (playerList[i].getMinutesPlayed() * (this->oppFGA - this->opp3PA)));
-		tempAdvPlayer.TurnoverPercentage = ((100 * playerList[i].getTurnovers()) / ((playerList[i].getFieldGoalsAttemtped() + 0.44 * playerList[i].getFreeThrowsAttemtped() * playerList[i].getTurnovers())));
-		tempAdvPlayer.UsagePercentage = (100 * (playerList[i].getFieldGoalsAttemtped() + 0.44 * playerList[i].getFreeThrowsAttemtped() * playerList[i].getTurnovers()) * (static_cast<double>(2880)) / (playerList[i].getMinutesPlayed() * (this->teamFGA + 0.44 * this->teamFTA * this->teamTOV)));
+		// tempAdvPlayer.StealPercentage = (100 * (playerList[i].getSteals() * static_cast<double>(2880))) / (playerList[i].getMinutesPlayed() * oppPossessions);
+		tempAdvPlayer.BlockPercentage = (100 * (playerList[i].getBlocks()  * static_cast<double>(2880))) / (playerList[i].getMinutesPlayed() * (this->oppFGA - this->opp3PA));
+		tempAdvPlayer.TurnoverPercentage = (100 * playerList[i].getTurnovers()) / (playerList[i].getFieldGoalsAttemtped() + 0.44 * playerList[i].getFreeThrowsAttemtped() + playerList[i].getTurnovers());
+		tempAdvPlayer.UsagePercentage = 100 * ((playerList[i].getFieldGoalsAttemtped() + 0.44 * playerList[i].getFreeThrowsAttemtped() + playerList[i].getTurnovers()) * (static_cast<double>(2880))) / (playerList[i].getMinutesPlayed() * (this->teamFGA + 0.44 * this->teamFTA + this->teamTOV));
 		
 		AdvPlayerValues.push_back(tempAdvPlayer);
-
-		cout << i+1 << ". Player's True Shooting Percentage: ." << fixed << setprecision(0) << AdvPlayerValues[i].TrueShootingPercentage << endl;
+		// 
+		cout << i+1 << ". Offensive rebound Percentage: " << fixed << setprecision(1) << AdvPlayerValues[i].UsagePercentage << endl;
 	}
 }
 

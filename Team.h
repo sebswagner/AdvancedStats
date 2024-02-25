@@ -68,7 +68,7 @@ class Team {
 		double teamFGA, teamFGM, teamFGPercentage;
 		double teamThreePM, teamThreePA, teamThreePPercentage;
 		double teamFTM, teamFTA, teamFTPercentage;
-		int teamOffensiveRB, teamDeffensiveRB, teamTotalRB;
+		int teamOffensiveRB = 0, teamDeffensiveRB = 0, teamTotalRB;
 		int teamAST = 0;
 		int teamBLK = 0;
 		int teamTOV = 0;
