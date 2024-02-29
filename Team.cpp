@@ -36,6 +36,8 @@ void Team::calcSumOfTeamStats()
 	this->teamTotalRB = this->teamOffensiveRB + this->teamDeffensiveRB;
 	
 	/*
+	* Was used to check if the values were correct
+	* 
 	cout << "Team minutes played: " << this->teamMinutesPlayed << endl;
 	cout << "Team Field Goals made: " << this->teamFGM << endl;
 	cout << "Team Field Goals attempted: " << this->teamFGA << endl;

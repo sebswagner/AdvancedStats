@@ -25,15 +25,18 @@ int main() {
      myPlayer JacksonJr;
 
      Team Bucks;
+     /* 
+     
+     Not needed anymore, it was needed for previous testing
 
     Bucks.oppDRB = 33;
     Bucks.oppORB = 7;
     Bucks.oppTRB = 40;
     Bucks.oppFGA = 83;
     Bucks.opp3PA = 26;
+    */
 
-    double teamORB = 11;
-    double teamDRB = 33;
+    // Adding players and their stats for their game
 
     Giannis.setPlayerStats(36, 37, 15, 17, 0, 0, 5, 9, 0, 4, 12, 0, 0, 1, 5);
     Lillard.setPlayerStats  (34, 58, 7, 21, 3, 13, 7, 7, 2, 3, 7, 1, 0, 4, 2);    
@@ -45,6 +48,8 @@ int main() {
     Beverley.setPlayerStats (14, 13, 0, 4, 0, 4, 1, 2, 1, 3, 4, 1, 0, 1, 1);
     Green.setPlayerStats    (14, 5, 2, 4, 2, 4, 0, 0, 0, 1, 1, 1, 0, 1, 2);
     JacksonJr.setPlayerStats(2, 59, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2);
+
+    // Adding players into initialized team
 
     Bucks.addPlayer(Giannis);
     Bucks.addPlayer(Lillard);    
@@ -61,28 +66,6 @@ int main() {
     Bucks.calculateTeamStats();
 
     Bucks.calcIndAdvStats();
-
-    // Ubaci funkciju koja uzima values od protivnickog ekipe
-
-    
-
-    cout << endl;
-    /*
-    Lillard.getBasicBoxScoreStats();
-    Lillard.printPlayerBasicStats();
-    * 
-    Lillard.getTrueShooting();
-    Lillard.getEffectiveFGPercentage();
-    Lillard.getThreePointAttemptRate();
-    Lillard.getFreeThrowAttemptRate();
-
-    cout << teamORB << " " << oppDRB << endl;
-    */
-
-
-    
-
-
 
 
     return 0;
