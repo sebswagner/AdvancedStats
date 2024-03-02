@@ -27,12 +27,14 @@ void Team::calcSumOfTeamStats()
 		this->teamOffensiveRB += playerList[i].getORebounds();
 		this->teamDeffensiveRB += playerList[i].getDRebounds();
 
+		
 		this->teamAST += playerList[i].getAssists();
 		this->teamSTL += playerList[i].getSteals();
 		this->teamBLK += playerList[i].getBlocks();
 		this->teamTOV += playerList[i].getTurnovers();
 	}
 
+	this->teamPTS = ((this->teamFGM - this->teamThreePM) * 2) + (this->teamThreePM * 3) + this->teamFTM;
 	this->teamTotalRB = this->teamOffensiveRB + this->teamDeffensiveRB;
 	
 	/*
@@ -63,8 +65,12 @@ void Team::calculateTeamStats()
 
 void Team::calcTeamAdvStats()
 {
+	TeamTrueShootingPercentage = (this->teamPTS / (2 * (this->teamFTA * 0.44 + this->teamFGA)));
+	TeamEffectiveFieldGoalPercentage = ((this->teamFGM + 0.5 * this->teamThreePM) / this->teamFGA) * 1000;
+	TeamThreePointAttemptRate = (this->teamThreePA / this->teamFGA) * 1000;
+	TeamFreeThrowAttemptRate = (this->teamFTA / this->teamFGA) * 1000;
 
-	
+
 }
 
 void Team::calcIndAdvStats()

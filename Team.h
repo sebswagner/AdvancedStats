@@ -86,4 +86,13 @@ class Team {
 		double TeamOffensiveReboundPercentage, TeamDeffensiveReboundPercentage, TeamTotalReboundPercentage;
 		double TeamAssistPercentage;
 		double TeamStealPercentage, TeamBlockPercentage, TeamTurnoverPercentage, TeamUsagePercentage;
+
+
+		//advamced team stats
+
+		double TeamTrueShootingPercentage;
+		double TeamEffectiveFieldGoalPercentage;
+		double TeamThreePointAttemptRate, TeamFreeThrowAttemptRate;
+		double TeamOffensiveReboundPercentage, TeamDeffensiveReboundPercentage, TeamTotalReboundPercentage;
+		double TeamAssistPercentage, TeamStealPercentage, TeamBlockPercentage, TeamTurnoverPercentage, TeamUsagePercentage;
 };
