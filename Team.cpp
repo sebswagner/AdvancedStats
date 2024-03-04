@@ -70,7 +70,18 @@ void Team::calcTeamAdvStats()
 	TeamThreePointAttemptRate = (this->teamThreePA / this->teamFGA) * 1000;
 	TeamFreeThrowAttemptRate = (this->teamFTA / this->teamFGA) * 1000;
 
+	TeamOffensiveReboundPercentage = (100 * (this->teamOffensiveRB * static_cast<double>(2880))) / (static_cast<double>(2880) * (this->teamOffensiveRB + this->oppDRB));
+	TeamDeffensiveReboundPercentage = (100 * (this->teamDeffensiveRB * static_cast<double>(2880))) / (static_cast<double>(2880) * (this->teamDeffensiveRB + this->oppORB));
 
+	TeamTotalReboundPercentage = (100 * this->teamTotalRB * static_cast<double>(2880)) / (static_cast<double>(2880) * (this->teamTotalRB + this->oppTRB));
+	TeamAssistPercentage = (100 * this->teamAST / (((static_cast<double>(14400) / (static_cast<double>(2880)) * this->teamFGM) - this->teamFGM)));
+	//asssist doesn't produce the wanted outcome, needs to be fixed
+
+	TeamBlockPercentage = (100 * (this->teamBLK * static_cast<double>(2880))) / (static_cast<double>(2880) * (this->oppFGA - this->opp3PA));
+	TeamTurnoverPercentage = (100 * this->teamTOV) / (this->teamFGA + 0.44 * this->teamFTA + this->teamTOV);
+	TeamUsagePercentage = 100 * ((this->teamFGA + 0.44 * this->teamFTA + this->teamTOV) * (static_cast<double>(2880))) / ((static_cast<double>(2880) * (this->teamFGA + 0.44 * this->teamFTA + this->teamTOV)));
+
+	cout <<"Offensive rebound Percentage: " << fixed << setprecision(3) << TeamUsagePercentage << endl;
 }
 
 void Team::calcIndAdvStats()
@@ -99,7 +110,7 @@ void Team::calcIndAdvStats()
 		
 		AdvPlayerValues.push_back(tempAdvPlayer);
 		// 
-		cout << i+1 << ". Offensive rebound Percentage: " << fixed << setprecision(1) << AdvPlayerValues[i].UsagePercentage << endl;
+		//cout << i+1 << ". Offensive rebound Percentage: " << fixed << setprecision(1) << AdvPlayerValues[i].UsagePercentage << endl;
 	}
 }
 

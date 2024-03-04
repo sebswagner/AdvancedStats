@@ -28,17 +28,17 @@ int main() {
      /* 
      
      Not needed anymore, it was needed for previous testing
-
+     */
     Bucks.oppDRB = 33;
     Bucks.oppORB = 7;
     Bucks.oppTRB = 40;
     Bucks.oppFGA = 83;
     Bucks.opp3PA = 26;
-    */
+    
 
     // Adding players and their stats for their game
 
-    Giannis.setPlayerStats(36, 37, 15, 17, 0, 0, 5, 9, 0, 4, 12, 0, 0, 1, 5);
+    Giannis.setPlayerStats  (36, 37, 15, 17, 0, 0, 5, 9, 0, 4, 12, 0, 0, 1, 5);
     Lillard.setPlayerStats  (34, 58, 7, 21, 3, 13, 7, 7, 2, 3, 7, 1, 0, 4, 2);    
     Brook.setPlayerStats    (34, 37, 5, 14, 2, 9, 2, 2, 2, 9, 2, 2, 4, 1, 2);
     Malik.setPlayerStats    (29, 45, 3, 10, 3, 10, 0, 0, 0, 2, 0, 2, 0, 0, 4);
@@ -67,6 +67,7 @@ int main() {
 
     Bucks.calcIndAdvStats();
 
+    Bucks.calcTeamAdvStats();
 
     return 0;
 }
