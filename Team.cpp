@@ -76,7 +76,7 @@ void Team::calcTeamAdvStats()
 	TeamTotalReboundPercentage = (100 * this->teamTotalRB * static_cast<double>(2880)) / (static_cast<double>(2880) * (this->teamTotalRB + this->oppTRB));
 	TeamAssistPercentage = (100 * this->teamAST / (((static_cast<double>(14400) / (static_cast<double>(2880)) * this->teamFGM) - this->teamFGM)));
 	//asssist doesn't produce the wanted outcome, needs to be fixed
-
+	// TeamStealPercentage = (100 * (teamSTL * static_cast<double>(2880))) / (static_cast<double>(2880) * oppPossessions);
 	TeamBlockPercentage = (100 * (this->teamBLK * static_cast<double>(2880))) / (static_cast<double>(2880) * (this->oppFGA - this->opp3PA));
 	TeamTurnoverPercentage = (100 * this->teamTOV) / (this->teamFGA + 0.44 * this->teamFTA + this->teamTOV);
 	TeamUsagePercentage = 100 * ((this->teamFGA + 0.44 * this->teamFTA + this->teamTOV) * (static_cast<double>(2880))) / ((static_cast<double>(2880) * (this->teamFGA + 0.44 * this->teamFTA + this->teamTOV)));
@@ -85,9 +85,7 @@ void Team::calcTeamAdvStats()
 }
 
 void Team::calcIndAdvStats()
-{
-	
-	
+{	
 	for (int i = 0; i < this->playerList.size(); i++) {
 		AdvPlayerStruct tempAdvPlayer;
 
